@@ -1,0 +1,2 @@
+# whiskybot
+Whiskybot for Telegram
