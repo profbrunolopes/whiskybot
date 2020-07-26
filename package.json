@@ -1,0 +1,26 @@
+{
+  "name": "whiskybot",
+  "version": "1.0.0",
+  "description": "Whiskybot for Telegram Chat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/profbrunolopes/whiskybot.git"
+  },
+  "author": "Bruno Lopes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/profbrunolopes/whiskybot/issues"
+  },
+  "homepage": "https://github.com/profbrunolopes/whiskybot#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.26",
+    "express": "^4.17.1",
+    "typescript": "^3.9.7"
+  }
+}
