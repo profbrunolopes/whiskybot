@@ -12,4 +12,18 @@ routes.get('/telegramTest', async (_, res) => {
     res.send(await telegramService.getMe());
 });
 
+routes.get('/setWebhook', async (_, res) => {
+    res.send(await telegramService.setWebhook());
+});
+
+routes.get('/deleteWebhook', async (_, res) => {
+    res.send(await telegramService.deleteWebhook());
+});
+
+routes.get('/getWebhookInfo', async (_, res) => {
+    res.send(await telegramService.getWebhookInfo());
+});
+
+
+
 export default routes;

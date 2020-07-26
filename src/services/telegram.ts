@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { User } from '../entities/telegram';
+import { User, WebhookInfo } from '../entities/telegram';
 
 
 const TELEGRAM_URL = 'https://api.telegram.org/bot'
@@ -12,3 +12,25 @@ export const getMe = async () => {
     const user:User = json.result;
     return user;
 };
+
+export const setWebhook = async () =>{
+    const body = {url: 'https://5ce0c8af28b9.ngrok.io/update'};
+    const response = await fetch(`${TELEGRAM_API_REQUEST}/setWebhook`, {
+        method: 'post',
+        body:    JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json' },
+    });
+    return await response.json();
+};
+
+export const deleteWebhook = async () => {
+    const response = await fetch(`${TELEGRAM_API_REQUEST}/deleteWebhook`);
+    return await response.json();
+}
+
+export const getWebhookInfo = async () => {
+    const response = await fetch(`${TELEGRAM_API_REQUEST}/getWebhookInfo`);
+    const json = await response.json();
+    const webhookInfo: WebhookInfo = json;
+    return webhookInfo;
+}
