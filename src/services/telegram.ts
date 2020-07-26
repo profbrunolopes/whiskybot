@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { User } from '../entities/telegram';
 
 
 const TELEGRAM_URL = 'https://api.telegram.org/bot'
@@ -8,5 +9,6 @@ const TELEGRAM_API_REQUEST = `${TELEGRAM_URL}${TELEGRAM_BOT_TOKEN}`
 export const getMe = async () => {
     const response = await fetch(`${TELEGRAM_API_REQUEST}/getMe`);
     const json = await response.json();
-    return json;
+    const user:User = json.result;
+    return user;
 };
