@@ -19,3 +19,42 @@ export interface WebhookInfo {
     max_connections: number;
     allowed_updates: string[];
 }
+
+export interface Update {
+    update_id: number;
+    message: Message;
+    edited_message: Message;
+    channel_post: Message;
+    edited_channel_post: Message;
+}
+
+export interface Message{
+    message_id: number;
+    from: User;
+    date: number;
+    chat: Chat;
+    text: string;
+}
+
+export interface Chat {
+    id: number;
+    type: string;
+    title: string;
+    username: string;
+    first_name: string;
+    last_name: string;
+    description: string;
+    invite_link: string;
+    slow_mode_delay: number;
+    sticker_set_name: string;
+    can_set_sticker_set: boolean;
+}
+
+export interface MessageRequest{
+    chat_id: number;
+    text: string;
+    parse_mode?: string;
+    disable_web_page_preview?: boolean;
+    disable_notification?: boolean;
+    reply_to_message_id?: number;
+}

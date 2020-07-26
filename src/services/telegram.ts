@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { User, WebhookInfo } from '../entities/telegram';
+import { User, WebhookInfo, Message, MessageRequest } from '../entities/telegram';
 
 
 const TELEGRAM_URL = 'https://api.telegram.org/bot'
@@ -33,4 +33,18 @@ export const getWebhookInfo = async () => {
     const json = await response.json();
     const webhookInfo: WebhookInfo = json;
     return webhookInfo;
+}
+
+export const sendMessage = async (mRequest:MessageRequest) => {
+
+    const response = await fetch(`${TELEGRAM_API_REQUEST}/sendMessage`, {
+        method: 'post',
+        body:    JSON.stringify(mRequest),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    const json = await response.json();
+    const message: Message = json;
+    return message;
+
 }
