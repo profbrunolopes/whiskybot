@@ -3,7 +3,7 @@ import { User, WebhookInfo, Message, MessageRequest } from '../entities/telegram
 
 
 const TELEGRAM_URL = 'https://api.telegram.org/bot'
-const TELEGRAM_BOT_TOKEN = '1246454030:AAGsaOXip4Q83wZKj8KXbiQLKVgNj6jNfW4'
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAN_BOT_TOKEN
 const TELEGRAM_API_REQUEST = `${TELEGRAM_URL}${TELEGRAM_BOT_TOKEN}`
 
 export const getMe = async () => {
