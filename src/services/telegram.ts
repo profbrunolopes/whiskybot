@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 import { User, WebhookInfo, Message, MessageRequest } from '../entities/telegram';
 
+dotenv.config();
 
 const TELEGRAM_URL = 'https://api.telegram.org/bot'
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAN_BOT_TOKEN
@@ -14,7 +16,7 @@ export const getMe = async () => {
 };
 
 export const setWebhook = async () =>{
-    const body = {url: 'https://5ce0c8af28b9.ngrok.io/update'};
+    const body = {url: 'https://b9ac782cfd3e.ngrok.io/update'};
     const response = await fetch(`${TELEGRAM_API_REQUEST}/setWebhook`, {
         method: 'post',
         body:    JSON.stringify(body),
