@@ -1,7 +1,7 @@
-import { Message, MessageRequest } from '../entities/telegram';
+import { Update, Message, MessageRequest } from '../entities/telegram';
 import * as telegramService from '../services/telegram';
 
-abstract class BotCommand<T>{
+export abstract class BotCommand<T>{
     abstract execute():T;
 }
 
@@ -9,9 +9,11 @@ export class HelloCommand extends BotCommand<Promise<Message>>{
 
     private mRequest:MessageRequest;
 
-    constructor(chat_id:number, user:string){
+    constructor(update: Update){
         super();
-        this.mRequest = {chat_id: chat_id, text: `Hello ${user}`};
+        const chatId = update.message.chat.id;
+        const username = update.message.from.first_name;
+        this.mRequest = {chat_id: chatId, text: `Hello ${username}`};
     }
 
     setParseMode(format:string){
