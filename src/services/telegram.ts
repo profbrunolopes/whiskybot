@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
-import { User, WebhookInfo, Message, MessageRequest } from '../entities/telegram';
+import { User, WebhookInfo, Message, MessageRequest, PhotoRequest } from '../entities/telegram';
 
 dotenv.config();
 
@@ -49,4 +49,17 @@ export const sendMessage = async (mRequest:MessageRequest) => {
     const message: Message = json;
     return message;
 
+}
+
+export const sendPhoto = async (mRequest:PhotoRequest) => {
+
+    const response = await fetch(`${TELEGRAM_API_REQUEST}/sendPhoto`, {
+        method: 'post',
+        body:    JSON.stringify(mRequest),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    const json = await response.json();
+    const message: Message = json;
+    return message;
 }

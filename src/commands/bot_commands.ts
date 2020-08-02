@@ -1,4 +1,4 @@
-import { Update, Message, MessageRequest } from '../entities/telegram';
+import { Update, Message, MessageRequest, PhotoRequest } from '../entities/telegram';
 import * as telegramService from '../services/telegram';
 
 export abstract class BotCommand<T>{
@@ -34,6 +34,28 @@ export class HelloCommand extends BotCommand<Promise<Message>>{
 
     execute(){
         return telegramService.sendMessage(this.mRequest);
+    }
+
+}
+
+export class BestWhisky extends BotCommand<Promise<Message>>{
+
+    private mPhotoRequest:PhotoRequest;
+
+    constructor(update: Update){
+        super();
+        const chatId = update.message.chat.id;
+        const username = update.message.from.first_name;
+        this.mPhotoRequest = {
+            chat_id: chatId,
+            photo: 'https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1243544630',
+            caption: 'O melhor whyisky é o Johnnie Walker Blue Label 200th Anniversary'
+        };
+    }
+
+    execute(){
+        return telegramService.sendPhoto(this.mPhotoRequest);
+
     }
 
 }

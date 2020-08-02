@@ -58,3 +58,9 @@ export interface MessageRequest{
     disable_notification?: boolean;
     reply_to_message_id?: number;
 }
+
+export interface PhotoRequest{
+    chat_id: number;
+    photo: string;
+    caption?: string;
+}
